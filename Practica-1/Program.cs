@@ -23,6 +23,8 @@ namespace Practica_1
     }
     internal class Program
     {
+        //lista donde se guardaran los datos mas adelante
+        List<List<Alumno>> listasAlumnos = new List<List<Alumno>>();
         //creamos un arreglo utilizando como tipo de dato el struct
         static Alumno[] datosDeAlumnos = new Alumno[6];
         //creamos el arreglo y agregamos las materias de forma implicita
@@ -75,6 +77,7 @@ namespace Practica_1
                     ConvertirEnListas(notas);
                     break;
                 case 6:
+                    //CalcularPromedios(listasAlumnos);
                     break;
                 case 0:
                     Console.WriteLine("Fin del programa.");
@@ -228,9 +231,9 @@ namespace Practica_1
             for (int j = 0; j < 6; j++)
             {
                 //creamos una sublista donde se guardan las materias
-                List<int> notasAlumnos = new List<int> ();
+                List<int> notasAlumnos = new List<int>();
                 //luego recorremos las filas de la matriz
-                for (int i = 0; i < 4; i++) 
+                for (int i = 0; i < 4; i++)
                 {
                     //traspasamos los datos de la matriz a una lista dinamica
                     notasAlumnos.Add(notas[i, j]);
@@ -252,5 +255,26 @@ namespace Practica_1
             Console.WriteLine("\nPresione 'enter' para volver al menú");
             Console.ReadKey();
         }
+        /*
+        static void CalcularPromedios(List<List<Alumno>> listasAlumnos)
+        {
+            Console.WriteLine("\nPromedios de notas:");
+            for (int j = 0; j < listasAlumnos.Count; j++)
+            {
+                double suma = 0;
+                int cantidadNotas = 0;
+
+                foreach (var alumno in listasAlumnos[j])
+                {
+                    suma += alumno.Materia_1 + alumno.Materia_2 + alumno.Materia_3 + alumno.Materia_4;
+                    cantidadNotas++;
+                }
+
+                double promedio = cantidadNotas > 0 ? suma / cantidadNotas : 0;
+                Console.WriteLine($"Alumno {j + 1}: {promedio:F2}"); // Formato a 2 decimales
+            }
+            Console.WriteLine("\nPresione 'enter' para volver al menú");
+            Console.ReadKey();
+        }*/
     }
 }
